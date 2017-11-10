@@ -4,10 +4,11 @@ import {
     getCount,
     getEntityById,
     getFirstEntity,
-    getLastEntity
-} from '../after/dataManager';
+    getLastEntity,
+    filter
+} from '../after/dataManager/index';
 
-import Entity from '../after/entityManager';
+import Entity from '../after/entityManager/index';
 
 // Create instance for man
 const man = new Entity({
@@ -45,18 +46,27 @@ const all = getEntities();
 // Print entities count
 const count = getCount();
 
+console.log("Count: " + count)
+
 // Get entity by entity.id
 const entityById = getEntityById(0);
 
+console.log("entityById: " + JSON.stringify(entityById));
 // Get first entity
 const first = getFirstEntity();
 
+console.log("first: " + JSON.stringify(first));
+
 // Get last entity
 const last = getLastEntity();
+
+console.log("last: " + JSON.stringify(last));
 
 // Print all entities
 console.log(all);
 
 const filtered = filter(function (item) {
     return item.age > 20 && item.sex === 'male'
-})
+});
+
+console.log("filtered: " + JSON.stringify(filtered));
