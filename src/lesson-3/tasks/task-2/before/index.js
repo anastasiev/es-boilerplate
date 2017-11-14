@@ -1,5 +1,5 @@
 import {
-    addEntity as add,
+    addEntities as add,
     getEntities,
     getCount,
     getEntityById,
@@ -34,6 +34,9 @@ const firstEntity = man.getEntity();
 // Get data for woman
 const secondEntity = woman.getEntity();
 
+console.log(firstEntity)
+console.log(secondEntity)
+
 // Add man to collection
 add(firstEntity);
 
@@ -43,12 +46,15 @@ add(secondEntity);
 // Get all entities
 const all = getEntities();
 
+console.log(all)
 // Print entities count
 const count = getCount();
 
+console.log(count)
 // Get entity by entity.id
 const entityById = getEntityById(0);
 
+console.log(entityById)
 // Get first entity
 const first = getFirstEntity();
 
@@ -58,4 +64,4 @@ const last = getLastEntity();
 // Filter entities by callback
 const filtered = filter(item => item.sex === 'male' && item.age > 20);
 
-console.log(filtered);
+console.log("filtered: " + JSON.stringify(filtered));
