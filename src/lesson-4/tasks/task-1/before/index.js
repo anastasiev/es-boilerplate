@@ -1,5 +1,5 @@
 import {
-    addEntity as add,
+    addEntities as add,
     getEntities,
     getCount,
     getEntityById,
