@@ -38,6 +38,7 @@ const man = new Entity({
     ]
 });
 
+
 const women = new Entity({
     id: 1,
     firstName: 'Tomas',
@@ -98,6 +99,7 @@ add(firstEntity);
 add(secondEntity);
 add(thirdEntity);
 
+
 const totalViews1 = getEntityTotalviews(firstEntity.id);
 console.log(totalViews1); // 46
 
@@ -112,3 +114,4 @@ console.log(totalViews4); // 138
 
 const entitiesSorted = getEntitiesSortedByPopularity();
 console.log(JSON.stringify(entitiesSorted, null, 2));
+
