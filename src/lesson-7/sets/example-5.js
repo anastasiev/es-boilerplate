@@ -18,5 +18,5 @@ console.log(set.size);
 set.clear()
 console.log('\n*****************CLEAR****************');
 console.log(set.has(5)); // false
-console.log(set.has('5')); // true
+console.log(set.has('5')); // false
 console.log(set.size);
