@@ -1,6 +1,5 @@
-import {
-    DataManager
-} from '../after/dataManager';
+'use strict';
+import { DataManager } from '../after/dataManager';
 
 import Entity from '../after/entityManager';
 
@@ -9,27 +8,29 @@ const tomas = {
     firstName: 'Tomas',
     lastName: 'Anderson',
     age: 21,
-    sex: 'male'
+    sex: 'male',
+    id: 0
 };
 const lisa = {
     firstName: 'Lisa',
     lastName: 'Black',
     age: 19,
-    sex: 'female'
+    sex: 'female',
+    id: 1
 };
 
 const man = new Entity(tomas);
 const woman = new Entity(lisa);
 
-// Create data Manager
-const dataManager = new DataManager();
 
-// Get data for man
+// // Create data Manager
+const dataManager = new DataManager();
+//
+// // Get data for man
 const firstEntity = man.getEntity();
 
 // Get data for woman
 const secondEntity = woman.getEntity();
-
 // Add man to collection
 dataManager.add(firstEntity);
 
@@ -41,6 +42,7 @@ const all = dataManager.getEntities();
 
 // Print entities count
 const count = dataManager.getCount();
+
 
 // Get entity by entity.id
 const entityById = dataManager.getEntityById(1);
