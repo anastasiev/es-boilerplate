@@ -4,7 +4,20 @@ function Temperature(degrees) {
     this.degrees = degrees;
 }
 
+Temperature.prototype[Symbol.toPrimitive] = function (type) {
+    switch (type){
+        case "string":
+            return `${this.degrees}°`;
+        case "number":
+            return this.degrees;
+        case "default":
+            return `${this.degrees} degrees`;
+    }
+
+};
+
 const freezing = new Temperature(32);
+
 
 console.log(freezing + '!'); // [object Object]! → // 32 degrees!
 console.log(freezing / 2); // NaN → // 16
