@@ -1,12 +1,30 @@
 import fetch from 'isomorphic-fetch';
 
-fetch('https://newsapi.org/v2/sources?language=ru&apiKey=886faf57284140dd830bf5d6ddadd32f')
-    .then(function(response) {
-        if (response.status >= 400) {
-            throw new Error("Bad response from server");
-        }
-        return response.json();
-    })
-    .then(function(stories) {
-        console.log(stories);
+let resources = [];
+let urls = [
+    'https://newsapi.org/v2/sources?country=ru&apiKey=9d3a843d872a47f48cb9a0979960e195',
+    'https://newsapi.org/v2/sourcsges?country=ca&apiKey=9d3a843d872a47f48cb9a0979960e195',
+    'https://newsapi.org/v2/sources?country=us&apiKey=9d3a843d872a47f48cb9a0979960e195'
+];
+let receiveResponse = response => {
+    if (response.status >= 400) {
+        return null;
+    }
+    return response.json();
+};
+let handleStories = stories => {
+    if(stories === null){
+        return;
+    }
+    stories.sources.forEach(s =>{
+        resources.push({
+            name: s.name,
+            description: s.description
+        })
     });
+};
+let chain = Promise.resolve();
+urls.forEach(url => {
+   chain = chain.then(() => fetch(url)).then(receiveResponse).then(handleStories)
+});
+chain.then(() => console.log(resources));
